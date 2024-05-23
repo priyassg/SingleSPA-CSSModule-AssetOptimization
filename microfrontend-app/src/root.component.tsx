@@ -1,3 +1,7 @@
+import ToggleButtons from "./components/Toggle";
+
 export default function Root(props) {
-  return <section>{props.name} is mounted!</section>;
+  return (
+    <ToggleButtons />
+  )
 }

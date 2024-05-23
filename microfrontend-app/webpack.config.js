@@ -1,5 +1,7 @@
 const { merge } = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa-react-ts");
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
@@ -7,9 +9,14 @@ module.exports = (webpackConfigEnv, argv) => {
     projectName: "microfrontend-app",
     webpackConfigEnv,
     argv,
+    disableHtmlGeneration: true, // This is required to not show the default html page
   });
 
   return merge(defaultConfig, {
-    // modify the webpack config however you'd like to by adding to this object
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: "./src/index.ejs",
+      }),
+    ],
   });
 };
