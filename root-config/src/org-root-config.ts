@@ -1,19 +1,10 @@
 import { registerApplication, start } from "single-spa";
 
 registerApplication({
-  name: "@single-spa/welcome",
-  app: () =>
-    System.import(
-      "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js"
-    ),
+  name: "microfrontend-app",
+  app: () => System.import("@org/microfrontend-app"),
   activeWhen: ["/"],
 });
-
-// registerApplication({
-//   name: "@org/navbar",
-//   app: () => System.import("@org/navbar"),
-//   activeWhen: ["/"]
-// });
 
 start({
   urlRerouteOnly: true,
