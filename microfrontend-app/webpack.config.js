@@ -3,6 +3,7 @@ const singleSpaDefaults = require("webpack-config-single-spa-react-ts");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ExposeRuntimeCssAssetsPlugin = require("single-spa-css/ExposeRuntimeCssAssetsPlugin.cjs");
 
 module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
@@ -37,6 +38,10 @@ module.exports = (webpackConfigEnv, argv) => {
         template: "./src/index.ejs",
       }),
       new MiniCssExtractPlugin({
+        filename: "styles.[contenthash].css",
+      }),
+      new ExposeRuntimeCssAssetsPlugin({
+        // The filename here must match the filename for the MiniCssExtractPlugin
         filename: "styles.[contenthash].css",
       }),
     ],
