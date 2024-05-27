@@ -1,0 +1,15 @@
+html
+body {
+    margin: 0;
+}
+
+.appContainer {
+    font-family: sans-serif;
+    width: 100vw;
+    height: 100vh;
+    padding: 0 1rem;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
